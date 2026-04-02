@@ -62,3 +62,32 @@ Build a C function that allows us to directly modify other integer variables.
 Hint: Use pointers and dereferencing.              
 Solution: SangamOne_C_Programming/Day2/10.c
 
+# Assignment Set 3
+## 3a 
+Create a program that generates math tables from user input.             
+There are two numbers the user will enter. The first one is the starting of the table     
+range they want, and the other is the ending of the table range. Generate all the tables        
+from the first number to the second number.           
+Solution: SangamOne_C_Programming/Day3/11.c
+
+## 3b
+Create a program that generates math tables from user input, just like 3a.                
+But this time, the user should also be able to choose how long one table continues.       
+So, the number of inputs now should be 4, because two is for the table range              
+and the other two are for the range of how long one table continues.                    
+Solution: SangamOne_C_Programming/Day4/12.c
+
+## 3c 
+Create a program that calculates the speed of an object if it was in a constant acceleration    
+for a given amount of time. The acceleration and time have the units meters per second squared      
+and seconds respectively. It should calculate speed in m/s, km/h, and mph. It should also calculate      
+the distance travelled by the object after being in that acceleration for that given time. If the speed    
+after that time in that acceleration was higher or equal to the speed of light, it should exit the program    
+with a warning message saying "Invalid speed because it is greater than or equal to light speed".        
+Solution: SangamOne_C_Programming/Day4/13.c
+
+## 3d 
+Create a program that converts inputted centigrade temp to fahrenheit temperature.
+
+## 3e
+Now create a program that converts inputted fahrenheit temp to celcius temp. 
