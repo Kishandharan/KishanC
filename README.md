@@ -91,3 +91,24 @@ Create a program that converts inputted centigrade temp to fahrenheit temperatur
 
 ## 3e
 Now create a program that converts inputted fahrenheit temp to celcius temp. 
+
+# Assignment Set 4 
+## 4a 
+Create a program that divides two numbers. But this time, take input from just    
+one line instead of two. The user is required to separate the two numbers by a whitespace.    
+Use a Guard Clause to check whether the divisor is 0.
+
+## 4b 
+Create a program that takes an year input from the user and calculates
+whether it is a leap year or not. Use Guard Clauses optionally for the conditions.
+
+## 4c
+Create a program that calculates factorial. Use a separate function and a for loop       
+to do so.
+
+## 4d 
+Create a program that calculates the lucky prisoners after all the 100 rounds of          
+the Andaman prisoner. Use Guard Clauses optionally.
+
+## 4e 
+Create a program that calculates factorial, but use a recursive function.
