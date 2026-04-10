@@ -112,3 +112,26 @@ the Andaman prisoner. Use Guard Clauses optionally.
 
 ## 4e 
 Create a program that calculates factorial, but use a recursive function.
+
+# Assignment Set 5 
+## 5a 
+Create a function that takes an integer argument and returns a pointer to an array        
+with numbers from 1 to the integer number that the function accepted as argument.             
+Then use that function to print numbers from 1 to 100. Use heap allocation inside    
+that function to avoid dangling pointers.
+
+## 5b
+Calculate simple interest, taking the Principle amount, the Interest Rate, and the time       
+in years as user inputs.     
+
+## 5c
+Take a string input and print it. Use the fgets function to do this.     
+
+## 5d 
+Create a program that takes command line arguments and prints the first one.        
+Print "No arguments. " if no arguments is provided.          
+
+## 5e 
+Create a program that takes two integer command line arguments and adds them.      
+Use the atoi() function from the stdlib.h header file to convert the string to an integer.    
+
