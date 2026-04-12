@@ -135,3 +135,25 @@ Print "No arguments. " if no arguments is provided.
 Create a program that takes two integer command line arguments and adds them.      
 Use the atoi() function from the stdlib.h header file to convert the string to an integer.    
 
+# Assignment Set 6
+## 6a 
+Create a program to calculate compound interest. Take Principle amount, annual rate,      
+compounding times per year, and target years from the user.
+
+## 6b
+Create a program to calculate the circumference of a circle using its radius.    
+Take the radius as input from the user.
+
+## 6c
+Create a program to calculate the circumference of a circle using its radius.    
+This time, take the radius as input from command line arguments.
+
+## 6d 
+Create a program that calculates Addition, Subtraction, Multiplication, Division and    
+Exponentiation using two numbers taken as command line arguments.     
+
+## 6e
+Create a program that calculates Addition, Subtraction, Multiplication, Division and    
+Exponentiation. But this time take numbers from user input instead of command line args. 
+
+__Tip: Use the math.h header to do complex calculations__
