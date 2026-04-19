@@ -157,3 +157,24 @@ Create a program that calculates Addition, Subtraction, Multiplication, Division
 Exponentiation. But this time take numbers from user input instead of command line args. 
 
 __Tip: Use the math.h header to do complex calculations__
+
+# Assignment Set 7 
+## 7a 
+Calculate compound interest, but using command line arguments.        
+Take the command like args in this order: Principle, Annual Rate, Compounding times per year,       
+Target Years.
+
+## 7b
+Create a program that has a string hardcoded and prints them using a typing effect.           
+Use the Sleep() function from the windows.h header to simulate delays between keys.    
+
+## 7c 
+Do the same typing effect as before, except now take the string from a command line argument.    
+
+## 7d 
+Do the typing effect program again but now use user input instead of cmd args. Use fgets(),       
+pointer arithmetic, sizeof() function, and array decay to do this.   
+
+## 7e 
+Without using indexing, print the second character of a string. 
+Use array decay and pointer arithmetic to do this.
