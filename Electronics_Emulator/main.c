@@ -42,7 +42,7 @@ int btoi(bool bit1, bool bit2){
   else if(bit1 == 1 && bit2 == 0){ result = 2; }
   else if(bit1 == 1 && bit2 == 1){ result = 3; }
 
-  return result
+  return result;
 }
 
 void setWrAddr(MEM *mem, bool bit1, bool bit2){
@@ -104,11 +104,73 @@ void setNWE(MEM *mem, bool new_nWE){
     mem->MEMORY[btoi(mem->WR_ADDR[0], mem->WR_ADDR[1])][1] = mem->DATA[1];
     mem->MEMORY[btoi(mem->WR_ADDR[0], mem->WR_ADDR[1])][2] = mem->DATA[2];
     mem->MEMORY[btoi(mem->WR_ADDR[0], mem->WR_ADDR[1])][3] = mem->DATA[3];
+
+    bool cond1 = mem->WR_ADDR[0] == mem->RE_ADDR[0];
+    bool cond2 = mem->WR_ADDR[1] == mem->RE_ADDR[1];
+    bool cond3 = cond1 && cond2;
+    if(cond3){
+        mem->OUT[0] = mem->DATA[0];
+        mem->OUT[1] = mem->DATA[1];
+        mem->OUT[2] = mem->DATA[2];
+        mem->OUT[3] = mem->DATA[3];
+    }
   }
+}
+
+void setDATA(MEM *mem, bool bit1, bool bit2, bool bit3, bool bit4){
+  int writeNum = 0;
+
+  mem->DATA[0] = bit1;
+  mem->DATA[1] = bit2;
+  mem->DATA[2] = bit3;
+  mem->DATA[3] = bit4;
+
+  if(mem->nWE == 0){
+    writeNum = btoi(mem->WR_ADDR[0], mem->WR_ADDR[1]);
+    mem->MEMORY[writeNum][0] = bit1;
+    mem->MEMORY[writeNum][1] = bit2;
+    mem->MEMORY[writeNum][2] = bit3;
+    mem->MEMORY[writeNum][3] = bit4;
+
+    if(mem->nRE == 0){
+      bool cond1 = mem->WR_ADDR[0] == mem->RE_ADDR[0];
+      bool cond2 = mem->WR_ADDR[1] == mem->RE_ADDR[1];
+      bool cond3 = cond1 && cond2;
+      if(cond3){
+        mem->OUT[0] = bit1;
+        mem->OUT[1] = bit2;
+        mem->OUT[2] = bit3;
+        mem->OUT[3] = bit4;
+      }
+    }
+  }
+}
+
+int* getOUT(MEM *mem){
+  static int arr1[4] = mem->OUT;
+  return arr1;
 }
 
 int main(){
   MEM mem = memInit();
-  
+
+  setWrAddr(&mem, 0, 0);
+  setReAddr(&mem, 0, 0);
+  setDATA(&mem, 1, 1, 1, 1);
+  setNRE(&mem, 0);
+  setNWE(&mem, 0);
+  setNWE(&mem, 1);
+
+  printf("%d", mem.MEMORY[0][0]);
+  printf("%d", mem.MEMORY[0][1]);
+  printf("%d", mem.MEMORY[0][2]);
+  printf("%d", mem.MEMORY[0][3]);
+
+  int* arr1 = getOUT(&mem);
+  printf("%d", arr1[0]);
+  printf("%d", arr1[1]);
+  printf("%d", arr1[2]);
+  printf("%d", arr1[3]);
+
   return 0;
 }
