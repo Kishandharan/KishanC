@@ -146,11 +146,6 @@ void setDATA(MEM *mem, bool bit1, bool bit2, bool bit3, bool bit4){
   }
 }
 
-int* getOUT(MEM *mem){
-  static int arr1[4] = mem->OUT;
-  return arr1;
-}
-
 int main(){
   MEM mem = memInit();
 
@@ -164,13 +159,12 @@ int main(){
   printf("%d", mem.MEMORY[0][0]);
   printf("%d", mem.MEMORY[0][1]);
   printf("%d", mem.MEMORY[0][2]);
-  printf("%d", mem.MEMORY[0][3]);
+  printf("%d\n", mem.MEMORY[0][3]);
 
-  int* arr1 = getOUT(&mem);
-  printf("%d", arr1[0]);
-  printf("%d", arr1[1]);
-  printf("%d", arr1[2]);
-  printf("%d", arr1[3]);
+  printf("%d", mem.OUT[0]);
+  printf("%d", mem.OUT[1]);
+  printf("%d", mem.OUT[2]);
+  printf("%d", mem.OUT[3]);
 
   return 0;
 }
