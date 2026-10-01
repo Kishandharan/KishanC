@@ -32,25 +32,41 @@ void setSER(Expander *exp, bool bit){
 
 void setBCLK(Expander *exp, bool bit){
   if(exp->bclk == 0 && bit == 1){
-    exp->buf[0] = exp->ser; // Hardcoding the bit for now. 
+    exp->buf[7] = exp->buf[6];
+    exp->buf[6] = exp->buf[5];
+    exp->buf[5] = exp->buf[4];
+    exp->buf[4] = exp->buf[3];
+    exp->buf[3] = exp->buf[2];
+    exp->buf[2] = exp->buf[1];
+    exp->buf[1] = exp->buf[0];
+    exp->buf[0] = exp->ser; 
   }
 }
 
 int main(){
   Expander exp1 = expanderInit();
 
-  setSER(&exp1, 0); 
-  setBCLK(&exp1, 1); 
-  setBCLK(&exp1, 0);
-  printf("Test1 state: %d\n", exp1.buf[0]);
-  // We should expect no change in exp1.buf[0] (The IC gets triggered, but buf[0] is already 0, so no change)
-
   setSER(&exp1, 1);
+  setBCLK(&exp1, 0);
   setBCLK(&exp1, 1);
   setBCLK(&exp1, 0);
-  printf("Test2 state: %d", exp1.buf[0]);
-  // We should expect a change in exp1.buf[0]
-  
+
+  for(int i = 0; i < 8; i++){
+    setSER(&exp1, 0);
+    setBCLK(&exp1, 0);
+    setBCLK(&exp1, 1);
+    setBCLK(&exp1, 0);
+    printf("%d %d %d %d %d %d %d %d\n", 
+          exp1.buf[0],
+          exp1.buf[1],
+          exp1.buf[2],
+          exp1.buf[3],
+          exp1.buf[4],
+          exp1.buf[5],
+          exp1.buf[6],
+          exp1.buf[7]
+    ); // Works really well!
+  }
 
   return 0;
 }
