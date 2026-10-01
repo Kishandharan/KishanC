@@ -31,42 +31,38 @@ void setSER(Expander *exp, bool bit){
 }
 
 void setBCLK(Expander *exp, bool bit){
-  if(exp->bclk == 0 && bit == 1){
-    exp->buf[7] = exp->buf[6];
-    exp->buf[6] = exp->buf[5];
-    exp->buf[5] = exp->buf[4];
-    exp->buf[4] = exp->buf[3];
-    exp->buf[3] = exp->buf[2];
-    exp->buf[2] = exp->buf[1];
-    exp->buf[1] = exp->buf[0];
-    exp->buf[0] = exp->ser; 
+  if(exp->bclr == 1){
+    if(exp->bclk == 0 && bit == 1){
+      exp->buf[7] = exp->buf[6];
+      exp->buf[6] = exp->buf[5];
+      exp->buf[5] = exp->buf[4];
+      exp->buf[4] = exp->buf[3];
+      exp->buf[3] = exp->buf[2];
+      exp->buf[2] = exp->buf[1];
+      exp->buf[1] = exp->buf[0];
+      exp->buf[0] = exp->ser; 
+    }
+  }
+  exp->bclk = bit;
+}
+
+void setOCLK(Expander *exp, bool bit){
+  if(exp->noe == 0){
+    if(exp->oclk == 0 && bit == 1){
+      for(int i = 0; i < 8; i++){ exp->out[i] = exp->buf[i]; }
+    }
+  }
+  exp->oclk = bit;
+}
+
+void setBCLR(Expander *exp, bool bit){
+  exp->bclr = bit;
+  if(bit == 0){
+    for(int i = 0; i < 9; i++){ exp1.buf[i] = 0; }
   }
 }
 
 int main(){
   Expander exp1 = expanderInit();
-
-  setSER(&exp1, 1);
-  setBCLK(&exp1, 0);
-  setBCLK(&exp1, 1);
-  setBCLK(&exp1, 0);
-
-  for(int i = 0; i < 8; i++){
-    setSER(&exp1, 0);
-    setBCLK(&exp1, 0);
-    setBCLK(&exp1, 1);
-    setBCLK(&exp1, 0);
-    printf("%d %d %d %d %d %d %d %d\n", 
-          exp1.buf[0],
-          exp1.buf[1],
-          exp1.buf[2],
-          exp1.buf[3],
-          exp1.buf[4],
-          exp1.buf[5],
-          exp1.buf[6],
-          exp1.buf[7]
-    ); // Works really well!
-  }
-
   return 0;
 }
