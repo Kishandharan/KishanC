@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 typedef struct ic74hc595{
-  int out[8];
   int outprime;
+  int outfinal[8];
 
-  bool outfinal[8];
+  bool out[8];
   bool buf[8];
   bool ser;
   bool noe;
@@ -15,7 +15,7 @@ typedef struct ic74hc595{
 
 Expander expanderInit(){
   Expander exp1;
-  for(int i = 0; i < 9; i++){ 
+  for(int i = 0; i < 8; i++){ 
     exp1.out[i] = 0; 
     exp1.buf[i] = 0; 
     exp1.outfinal[i] = 0; 
@@ -67,7 +67,7 @@ void setOCLK(Expander *exp, bool bit){
 void setBCLR(Expander *exp, bool bit){
   exp->bclr = bit;
   if(bit == 0){
-    for(int i = 0; i < 9; i++){ exp->buf[i] = 0; }
+    for(int i = 0; i < 8; i++){ exp->buf[i] = 0; }
   }
 }
 
@@ -129,7 +129,6 @@ void printExpanderDetails(Expander *exp){
 
 int main(){
   Expander exp1 = expanderInit();
-
   setBCLR(&exp1, 1);
   setNOE(&exp1, 1);
   setSER(&exp1, 1);
