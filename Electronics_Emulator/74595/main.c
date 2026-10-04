@@ -129,17 +129,22 @@ void printExpanderDetails(Expander *exp){
 
 int main(){
   Expander exp1 = expanderInit();
-  setBCLR(&exp1, 1);
-  setNOE(&exp1, 1);
+  setBCLR(&exp1, 1); // Don't clear the First Buffer
+  setNOE(&exp1, 1); // Clear the outputs to High-Impedance
+  setBCLR(&exp1, 0);
+
   setSER(&exp1, 1);
   setBCLK(&exp1, 0);
   setBCLK(&exp1, 1);
+
   setSER(&exp1, 1);
   setBCLK(&exp1, 0);
   setBCLK(&exp1, 1);
+
   setSER(&exp1, 0);
   setBCLK(&exp1, 0);
   setBCLK(&exp1, 1);
+
   setOCLK(&exp1, 0);
   setOCLK(&exp1, 1);
 
